@@ -10,7 +10,7 @@ public class MultiplierTest {
         Multiplier viisi = new Multiplier(5);
 
         assertEquals(5, viisi.multipliedBy(1));
-        assertEquals(31, viisi.multipliedBy(7));
+        assertEquals(35, viisi.multipliedBy(7));
     }
 
 }
