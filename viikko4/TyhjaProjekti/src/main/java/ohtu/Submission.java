@@ -2,6 +2,7 @@ package ohtu;
 
 public class Submission {
     private String student_number;
+    private int maximi;
     private int week;
     private int hours;
     private boolean a1;
@@ -26,6 +27,11 @@ public class Submission {
     private boolean a20;
     private boolean a21;
 
+    
+    public void setMaximi(int maximi) {
+        this.maximi = maximi;
+    }
+    
     public void setA1(boolean a1) {
         this.a1 = a1;
     }
@@ -116,6 +122,10 @@ public class Submission {
 
     public void setHours(int hours) {
         this.hours = hours;
+    }
+    
+    public int getMaximi() {
+        return maximi;
     }
     
     public int getTotal() {
@@ -273,7 +283,8 @@ public class Submission {
         if(a21) sb.append("21 ");
         
         return "viikko " + this.week + ": "
-                + "tehtyjä tehtäviä yhteensä: " + this.getTotal() + ", "
+                + "tehtyjä tehtäviä yhteensä: " + this.getTotal() + " "
+                + "(maksimi " + this.maximi + "), "
                 + "aikaa kului " + this.hours + " tuntia, "
                 + "tehdyt tehtävät: " + sb.toString();
     }
