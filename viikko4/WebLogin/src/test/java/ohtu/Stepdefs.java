@@ -1,6 +1,7 @@
 package ohtu;
 
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,7 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Stepdefs {
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver;
     String baseUrl = "http://localhost:4567";
     
     @Given("^login is selected$")
@@ -46,6 +47,11 @@ public class Stepdefs {
         logInWith(username, password);
     }
     
+    @When("^incorrect username \"([^\"]*)\" and password \"([^\"]*)\" are given$")
+    public void incorrect_username_is_given(String username, String password) throws Throwable {
+        logInWith(username, password);
+    }
+    
     @Then("^user is logged in$")
     public void user_is_logged_in() throws Throwable {
         pageHasContent("Ohtu Application main page");
@@ -60,6 +66,12 @@ public class Stepdefs {
     @After
     public void tearDown(){
         driver.quit();
+    }
+    
+    @Before
+    public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        driver = new ChromeDriver();
     }
         
     /* helper methods */
